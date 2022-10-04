@@ -1,38 +1,28 @@
-function clock() { 
-var fullDate = new Date();
-var hour = fullDate.getHours();
-var minute = fullDate.getMinutes();
-var second = fullDate.getSeconds();
+function clock() {
+  // Hour = h
+  // Minute = m
+  // Second = s
 
-if(hour < 10)
-{
-     hour = "0" + hour;
+  var fullDate = new Date();
+  var h = fullDate.getHours();
+  var m = fullDate.getMinutes();
+  var s = fullDate.getSeconds();
+
+  if (h == 10) {
+    h = 12;
+  }
+
+  if (h > 12) {
+    h = h - 12;
+  }
+
+  h = h < 10 ? "0" + h : h;
+  m = m < 10 ? "0" + m : m;
+  s = s < 10 ? "0" + s : s;
+
+  document.getElementById("hour").innerHTML = h;
+  document.getElementById("minute").innerHTML = ":" + m;
+  document.getElementById("second").innerHTML = ":" + s;
 }
-if(minute < 10)
-{
-     minute = "0" + minute;
-}
-if(second < 10)
-{
-     second = "0" + second;
-}
 
-document.getElementById("hour").innerHTML = hour;
-document.getElementById("minute").innerHTML = ":" + minute;
-document.getElementById("second").innerHTML = ":" + second;
- 
-}
-
-setInterval(clock,1000);
-
-
-
-
-
-
-
-
-
-
-
-
+setInterval(clock, 1000);
